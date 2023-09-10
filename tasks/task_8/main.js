@@ -20,7 +20,7 @@ const makeRequestPromiseChain = (url) => {
     })
     .catch((errorOrRejectedPromise) => {
       // handle error or rejected Promise
-      console.log(errorOrRejectedPromise.status);
+      console.error(errorOrRejectedPromise.status);
     });
 };
 
@@ -46,7 +46,7 @@ const makeRequestAsyncAwait = async (url) => {
     const result = await httpRequestWithPromise(url);
     console.log(result.status);  // Should log 200 if URL exists
   } catch (error) {
-    console.log(error.status);  // Should log 400 if no URL is passed
+    console.error(error.status);  // Should log 400 if no URL is passed
   }
 };
 
