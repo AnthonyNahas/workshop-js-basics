@@ -12,19 +12,12 @@ const httpRequestWithPromise = (url) =>
     }, 1000);
   });
 
-// ! Make request via Promise chain
 const makeRequestPromiseChain = (url) => {
   httpRequestWithPromise(url)
-    .then(
+    .then((result) => {
       // handle resolved Promise
-      (result) => {
-        console.log(result.status);
-      },
-      // handle rejected Promise
-      (rejectedResult) => {
-        console.log(rejectedResult.status);
-      }
-    )
+      console.log(result.status);
+    })
     .catch((errorOrRejectedPromise) => {
       // handle error or rejected Promise
       console.log(errorOrRejectedPromise.status);
@@ -32,7 +25,7 @@ const makeRequestPromiseChain = (url) => {
 };
 
 // no url -> Promise gets rejected
-makeRequestPromiseChain();
+makeRequestPromiseChain(); // should log 400
 
 // ? 🐆 [Task]: Currently the rejected promise is handled inside the
 // ?            second callback function of the `.then` call.
