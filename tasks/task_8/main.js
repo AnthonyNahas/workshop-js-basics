@@ -43,14 +43,15 @@ makeRequestPromiseChain(); // should log 400
 
 const makeRequestAsyncAwait = async (url) => {
   try {
-    // Add code here to log the status
+    const result = await httpRequestWithPromise(url);
+    console.log(result.status);  // Should log 200 if URL exists
   } catch (error) {
-    // Add code here to log the status
+    console.log(error.status);  // Should log 400 if no URL is passed
   }
 };
 
 // passed url causes resolved Promise
-makeRequestAsyncAwait("http://localhost:3000");
+makeRequestAsyncAwait("http://localhost:3000"); // 200
 
 // no passed url causes rejected Promise
-makeRequestAsyncAwait();
+makeRequestAsyncAwait(); // 400
