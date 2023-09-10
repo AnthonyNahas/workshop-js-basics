@@ -1,4 +1,4 @@
-// S46 Arrays - Iterators
+// S47 Arrays - Iterators
 
 const names = ['Hanni', 'Nanni'];
 
