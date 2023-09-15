@@ -44,13 +44,21 @@ const myFunction2 = () => {
 
 };
 
-myFunction()
-  .then((res) => console.log('my result = ', res))
-  .then(() => this.myFunction())
-  .catch((err) => console.error('err = ', err));
 
 const testPromise = () => {
-  return Promise.all([myFunction(), myFunction()]); // Fork Join
+  myFunction()
+    .then((res) => console.log('my result = ', res))
+    .then(() => this.myFunction())
+    .catch((err) => console.error('err = ', err));
+};
+
+const testAwait = async () => {
+  try {
+    await myFunction();
+    await myFunction2();
+  } catch (e) {
+    console.error('Error --> ', e);
+  }
 };
 
 const fetchData = async (number, age, firstName) => {
